@@ -1,10 +1,12 @@
 package app;
 import view.*;
 import controller.*;
+import data.SellerDAO;
 
 public class AppRouter implements RoutingDelegate {
 	
 	static AppRouter router;
+	static SellerDAO sellerDAO;
 	
 	SellerBasicInfoFormView sellerBasicInfoFormView;
 	AddressFormView addressFormView;
@@ -15,6 +17,7 @@ public class AppRouter implements RoutingDelegate {
 	
 	public static void main(String[] args) {
 		router = new AppRouter();
+		sellerDAO = new SellerDAO();
 	}
 	
 	AppRouter() {
@@ -70,6 +73,7 @@ public class AppRouter implements RoutingDelegate {
 	@Override
 	public void presentRegisterSellerForm() {
 		sellerFormController = new SellerFormController();
+		sellerFormController.sellerDAO = sellerDAO;
 		sellerBasicInfoFormView = new SellerBasicInfoFormView();
 		sellerBasicInfoFormView.delegate = sellerFormController;
 		sellerBasicInfoFormView.router = this;

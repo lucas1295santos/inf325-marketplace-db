@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import model.*;
+import data.SellerDAO;
 import view.FormViewDelegate;
 
 public class SellerFormController implements FormViewDelegate {
@@ -15,6 +16,8 @@ public class SellerFormController implements FormViewDelegate {
 	private String email;
 	private Address address;
 	List<Product> products = new ArrayList<Product>();
+	
+	public SellerDAO sellerDAO;
 	
 	@Override
 	public void saveBasicInformationClicked(String name, String email, String phone) {
@@ -40,9 +43,6 @@ public class SellerFormController implements FormViewDelegate {
 		products.toArray(productsArray);
 		Seller seller = new Seller(null, name, email, phone, address, productsArray);
 		
-		Gson gson = new Gson();
-		System.out.println(gson.toJson(seller));
-		
-		// TODO Send to the data layer to save on DB
+		sellerDAO.saveSeller(seller);
 	}
 }
