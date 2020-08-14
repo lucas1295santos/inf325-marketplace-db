@@ -9,6 +9,7 @@ public class AppRouter implements RoutingDelegate {
 	SellerBasicInfoFormView sellerBasicInfoFormView;
 	AddressFormView addressFormView;
 	ProductFormView productFormView;
+	HomeView homeView;
 
 	SellerFormController sellerFormController;
 	
@@ -17,14 +18,14 @@ public class AppRouter implements RoutingDelegate {
 	}
 	
 	AppRouter() {
-		sellerFormController = new SellerFormController();
-		sellerBasicInfoFormView = new SellerBasicInfoFormView();
-		sellerBasicInfoFormView.delegate = sellerFormController;
-		sellerBasicInfoFormView.router = this;
-		
-		sellerBasicInfoFormView.display();
+		presentHome();
 	}
 
+	private void presentHome() {
+		homeView = new HomeView();
+		homeView.router = this;
+		homeView.display();
+	}
 	
 	@Override
 	public void completedBasicInformationForm() {
@@ -57,7 +58,23 @@ public class AppRouter implements RoutingDelegate {
 			
 			productFormView.display();
 		} else {
-			
+			 
 		}
+	}
+
+	@Override
+	public void presentListSellers() {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void presentRegisterSellerForm() {
+		sellerFormController = new SellerFormController();
+		sellerBasicInfoFormView = new SellerBasicInfoFormView();
+		sellerBasicInfoFormView.delegate = sellerFormController;
+		sellerBasicInfoFormView.router = this;
+		
+		homeView.close();
+		sellerBasicInfoFormView.display();
 	}
 }
