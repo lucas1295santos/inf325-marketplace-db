@@ -1,6 +1,6 @@
 package view;
 
-public interface UIDelegate {
+public interface FormViewDelegate {
 	void saveBasicInformationClicked(String name, String email, String phone);
 	void saveAddressClicked(
 				String zipCode,
@@ -11,4 +11,6 @@ public interface UIDelegate {
 				String street,
 				String number
 			);
+	void addProductClicked(String name, String description, int priceInCents);
+	void saveSellerClicked();
 }

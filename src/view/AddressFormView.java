@@ -13,11 +13,13 @@ import app.RoutingDelegate;
 public class AddressFormView {
 	private JFrame window;
 	private Container windowContainer;
-	public UIDelegate delegate;
+	public FormViewDelegate delegate;
 	public RoutingDelegate router;
 	
 	JTextField zipCodeTextField, countryTextField, stateTextField;
 	JTextField cityTextField, neighborhoodTextField, streetTextField, numberTextField;
+	
+	// MARK: - Public
 	
 	public void display() {
 		createBase();
@@ -26,6 +28,12 @@ public class AddressFormView {
 		createControlls();
 		window.validate();
 	}
+	
+	public void close() {
+		window.dispose();
+	}
+	
+	// MARK: - Private
 	
 	private void createBase() {
 		window = new JFrame();

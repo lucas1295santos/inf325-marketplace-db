@@ -8,6 +8,7 @@ public class AppRouter implements RoutingDelegate {
 	
 	SellerBasicInfoFormView sellerBasicInfoFormView;
 	AddressFormView addressFormView;
+	ProductFormView productFormView;
 
 	SellerFormController sellerFormController;
 	
@@ -31,18 +32,32 @@ public class AppRouter implements RoutingDelegate {
 		addressFormView.delegate = sellerFormController;
 		addressFormView.router = this;
 
+		sellerBasicInfoFormView.close();
 		addressFormView.display();
 	}
 
 	@Override
 	public void completedAddressForm() {
-		// TODO Auto-generated method stub
+		productFormView = new ProductFormView();
+		productFormView.delegate = sellerFormController;
+		productFormView.router = this;
 		
+		addressFormView.close();
+		productFormView.display();
 	}
 
 	@Override
 	public void completedProductInformationForm(boolean registerMore) {
-		// TODO Auto-generated method stub
+		productFormView.close();
 		
+		if(registerMore == true) {
+			productFormView = new ProductFormView();
+			productFormView.delegate = sellerFormController;
+			productFormView.router = this;
+			
+			productFormView.display();
+		} else {
+			
+		}
 	}
 }

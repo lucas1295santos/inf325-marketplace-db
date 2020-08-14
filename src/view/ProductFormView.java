@@ -1,7 +1,4 @@
 package view;
-import javax.swing.*;
-
-import app.RoutingDelegate;
 
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -9,17 +6,21 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SellerBasicInfoFormView {
+import javax.swing.*;
 
+import app.RoutingDelegate;
+
+public class ProductFormView {
 	private JFrame window;
 	private Container windowContainer;
 	public FormViewDelegate delegate;
 	public RoutingDelegate router;
 	
-	JTextField nameTextField, emailTextField, phoneTextField;
+	JTextField nameTextField, priceTextField;
+	JTextArea descriptionTextArea;
 	
 	// MARK: Public
-	
+
 	public void display() {
 		createBase();
 		createHeader();
@@ -45,7 +46,7 @@ public class SellerBasicInfoFormView {
 	private void createHeader() {
 		JPanel panel = new JPanel();
 		JLabel titleLabel;
-		titleLabel = new JLabel("Informações Básicas");
+		titleLabel = new JLabel("Novo produto");
 		panel.add(titleLabel);
 		windowContainer.add(panel);
 	}
@@ -54,21 +55,21 @@ public class SellerBasicInfoFormView {
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(3,2));
         
-        JLabel nameLabel, emailLabel, phoneLabel;
+        JLabel nameLabel, priceLabel, descriptionLabel;
         nameLabel = new JLabel("Nome");
-        emailLabel = new JLabel("e-mail");
-        phoneLabel = new JLabel("phone");
+        priceLabel = new JLabel("Preço em centavos");
+        descriptionLabel = new JLabel("Descrição");
         
 	    nameTextField = new JTextField(40);  
-	    emailTextField = new JTextField(40);
-	    phoneTextField = new JTextField(20);
+	    priceTextField = new JTextField(40);
+	    descriptionTextArea = new JTextArea();
 		         
 	    panel.add(nameLabel);
 	    panel.add(nameTextField);
-	    panel.add(emailLabel);
-	    panel.add(emailTextField);
-	    panel.add(phoneLabel);
-	    panel.add(phoneTextField);
+	    panel.add(priceLabel);
+	    panel.add(priceTextField);
+	    panel.add(descriptionLabel);
+	    panel.add(descriptionTextArea);
 	    
 	    panel.setVisible(true);
 		
@@ -80,19 +81,33 @@ public class SellerBasicInfoFormView {
 		panel.setLayout(new FlowLayout());
 		panel.setSize(300, 50);
 		
-		JButton btn = new JButton("Continuar");
-		btn.addActionListener(new ActionListener() {
+		JButton saveAndContinueBtn = new JButton("Salvar e cadastrar novo");
+		saveAndContinueBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				delegate.saveBasicInformationClicked(
+				delegate.addProductClicked(
 						nameTextField.getText(),
-						emailTextField.getText(),
-						phoneTextField.getText()
+						descriptionTextArea.getText(),
+						Integer.valueOf(priceTextField.getText()) 
 				);
-				router.completedBasicInformationForm();
+				router.completedProductInformationForm(true);
 			}
 		});
 		
-		panel.add(btn);
+		JButton saveAndFinishBtn = new JButton("Salvar e encerrar");
+		saveAndFinishBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				delegate.addProductClicked(
+						nameTextField.getText(),
+						descriptionTextArea.getText(),
+						Integer.valueOf(priceTextField.getText()) 
+				);
+				delegate.saveSellerClicked();
+				router.completedProductInformationForm(false);
+			}
+		});
+		
+		panel.add(saveAndContinueBtn);
+		panel.add(saveAndFinishBtn);
 		
 		panel.setVisible(true);
 		
