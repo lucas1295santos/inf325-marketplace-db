@@ -1,11 +1,8 @@
 package app;
 import view.*;
 
-import java.util.List;
-
 import controller.*;
 import data.SellerDAO;
-import model.Seller;
 
 public class AppRouter implements RoutingDelegate {
 	

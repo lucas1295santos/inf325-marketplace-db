@@ -22,12 +22,12 @@ public class Seller {
 			Address address,
 			Product[] products
 			) {
-		this._id = id;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.address = address;
-		this.products = products;
+		this.set_id(id);
+		this.setName(name);
+		this.setEmail(email);
+		this.setPhone(phone);
+		this.setAddress(address);
+		this.setProducts(products);
 	}
 	
 	public Seller() {}
@@ -40,5 +40,45 @@ public class Seller {
 	
 	public String getName() {
 		return this.name;
+	}
+
+	public ObjectId get_id() {
+		return _id;
+	}
+
+	public void set_id(ObjectId _id) {
+		this._id = _id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Product[] getProducts() {
+		return products;
+	}
+
+	public void setProducts(Product[] products) {
+		this.products = products;
 	}
 }

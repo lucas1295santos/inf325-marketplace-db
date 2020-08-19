@@ -20,13 +20,13 @@ public class Address {
 				String street,
 				String number
 				) {
-			this.zipCode = zipCode;
-			this.country = country;
-			this.state = state;
-			this.city = city;
-			this.neighborhood = neighborhood;
-			this.street = street;
-			this.number = number;
+			this.setZipCode(zipCode);
+			this.setCountry(country);
+			this.setState(state);
+			this.setCity(city);
+			this.setNeighborhood(neighborhood);
+			this.setStreet(street);
+			this.setNumber(number);
 		}
 		
 		// MARK: - Public
@@ -45,5 +45,45 @@ public class Address {
 		
 		public String getCountry() {
 			return this.country;
+		}
+		
+		public void setState(String state) {
+			this.state = state;
+		}
+		
+		public String getState() {
+			return this.state;
+		}
+		
+		public void setCity(String city) {
+			this.city = city;
+		}
+		
+		public String getCity() {
+			return this.city;
+		}
+		
+		public void setNeighborhood(String neighborhood) {
+			this.neighborhood = neighborhood;
+		}
+		
+		public String getNeighborhood() {
+			return this.neighborhood;
+		}
+
+		public String getStreet() {
+			return street;
+		}
+
+		public void setStreet(String street) {
+			this.street = street;
+		}
+
+		public String getNumber() {
+			return number;
+		}
+
+		public void setNumber(String number) {
+			this.number = number;
 		}
 }

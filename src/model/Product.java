@@ -17,10 +17,10 @@ public class Product {
 				String description,
 				int priceInCents
 				) {
-			this._id = _id;
-			this.name = name;
-			this.description = description;
-			this.priceInCents = priceInCents;
+			this.set_id(_id);
+			this.setName(name);
+			this.setDescription(description);
+			this.setPriceInCents(priceInCents);
 		}
 		
 		// MARK: - Public
@@ -31,5 +31,29 @@ public class Product {
 		
 		public String getName() {
 			return this.name;
+		}
+
+		public ObjectId get_id() {
+			return _id;
+		}
+
+		public void set_id(ObjectId _id) {
+			this._id = _id;
+		}
+
+		public String getDescription() {
+			return description;
+		}
+
+		public void setDescription(String description) {
+			this.description = description;
+		}
+
+		public int getPriceInCents() {
+			return priceInCents;
+		}
+
+		public void setPriceInCents(int priceInCents) {
+			this.priceInCents = priceInCents;
 		}
 }
