@@ -1,8 +1,6 @@
 package controller;
 import java.util.List;
 
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 
 import model.*;

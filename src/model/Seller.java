@@ -1,9 +1,11 @@
 package model;
 
+import org.bson.types.ObjectId;
+
 public class Seller {
 	
 	// MARK: - Private
-	private String id;
+	private ObjectId _id;
 	private String name;
 	private String email;
 	private String phone;
@@ -13,20 +15,22 @@ public class Seller {
 	// MARK: - Init
 	
 	public Seller(
-			String id,
+			ObjectId id,
 			String name,
 			String email,
 			String phone,
 			Address address,
 			Product[] products
 			) {
-		this.id = id;
+		this._id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
 		this.products = products;
 	}
+	
+	public Seller() {}
 	
 	// MARK: - Public
 	

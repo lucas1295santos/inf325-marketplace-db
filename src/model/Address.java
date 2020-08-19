@@ -38,4 +38,12 @@ public class Address {
 		public String getZipCode() {
 			return this.zipCode;
 		}
+		
+		public void setCountry(String country) {
+			this.country = country;
+		}
+		
+		public String getCountry() {
+			return this.country;
+		}
 }
